@@ -11,4 +11,6 @@ public interface NoteMapper {
     NoteMapper INSTANCE = Mappers.getMapper(NoteMapper.class);
 
     Note map(NoteEntity noteEntity);
+
+    NoteEntity map(Note note);
 }

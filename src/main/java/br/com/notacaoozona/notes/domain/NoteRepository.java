@@ -5,4 +5,6 @@ import java.util.List;
 public interface NoteRepository {
 
     List<Note> findAll();
+
+    Note save(final Note note);
 }

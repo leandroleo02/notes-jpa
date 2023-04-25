@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-interface NoteDao extends JpaRepository<NoteEntity, UUID> {
+interface NoteDAO extends JpaRepository<NoteEntity, UUID> {
 }

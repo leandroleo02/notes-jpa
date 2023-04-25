@@ -12,12 +12,18 @@ import java.util.List;
 @Repository
 public class NoteRepositoryImpl implements NoteRepository {
 
-    private final NoteDao dao;
+    private final NoteDAO dao;
 
     @Override
     public List<Note> findAll() {
         return dao.findAll()
             .stream().map(NoteMapper.INSTANCE::map)
             .toList();
+    }
+
+    @Override
+    public Note save(Note note) {
+        final var noteEntity = dao.save(NoteMapper.INSTANCE.map(note));
+        return NoteMapper.INSTANCE.map(noteEntity);
     }
 }

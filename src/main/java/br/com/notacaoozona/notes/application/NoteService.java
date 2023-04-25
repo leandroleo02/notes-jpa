@@ -18,4 +18,9 @@ public class NoteService {
     public List<Note> findAll() {
         return noteRepository.findAll();
     }
+
+    @Transactional
+    public Note create(Note noteForCreate) {
+        return noteRepository.save(noteForCreate);
+    }
 }
