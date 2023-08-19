@@ -10,7 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Repository
-public class NoteRepositoryImpl implements NoteRepository {
+public class PostgresNoteRepository implements NoteRepository {
 
     private final NoteDAO dao;
 
