@@ -9,7 +9,8 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.StreamSupport;
+
+import static java.util.stream.StreamSupport.stream;
 
 @RequiredArgsConstructor
 @Repository
@@ -19,7 +20,7 @@ public class PostgresNoteRepository implements NoteRepository {
 
     @Override
     public List<Note> findAll() {
-        return StreamSupport.stream(dao.findAll(Example.of(new NoteEntity())).spliterator(), false)
+        return stream(dao.findAll(Example.of(new NoteEntity())).spliterator(), false)
             .map(NoteMapper.INSTANCE::map)
             .toList();
     }
