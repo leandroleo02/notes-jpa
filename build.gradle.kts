@@ -33,6 +33,7 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("io.hypersistence:hypersistence-utils-hibernate-60:3.5.1")
 }
 
 tasks.withType<Test> {
