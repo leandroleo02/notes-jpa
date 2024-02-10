@@ -7,7 +7,7 @@ plugins {
 
 group = "br.com.notacaoozona"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
 	compileOnly {
