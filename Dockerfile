@@ -1,5 +1,10 @@
 # cache all the dependencies
 FROM gradle:8.4-jdk17 AS cache
+
+ARG BUILD_CACHE_PATH
+
+ENV GRADLE_USER_HOME=${BUILD_CACHE_PATH}
+
 WORKDIR /app
 COPY settings.gradle.kts build.gradle.kts ./
 
@@ -13,7 +18,7 @@ COPY --from=cache /home/gradle/.gradle /home/gradle/.gradle
 WORKDIR /app
 COPY . .
 
-RUN gradle build --no-daemon -x test
+RUN gradle assemble --no-daemon -x test
 
 # extract the layers from the jar and create a new image
 FROM azul/zulu-openjdk-alpine:17 AS extractor
