@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -14,6 +16,10 @@ import java.util.List;
 public class NoteService {
 
     private final NoteRepository noteRepository;
+
+    public Optional<Note> findById(UUID id) {
+        return noteRepository.findById(id);
+    }
 
     public List<Note> findAll() {
         return noteRepository.findAll();

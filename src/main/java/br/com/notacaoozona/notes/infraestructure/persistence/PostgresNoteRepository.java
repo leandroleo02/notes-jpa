@@ -7,12 +7,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Repository
 public class PostgresNoteRepository implements NoteRepository {
 
     private final NoteDAO dao;
+
+    @Override
+    public Optional<Note> findById(UUID id) {
+        return dao.findById(id)
+            .map(NoteMapper.INSTANCE::map);
+    }
 
     @Override
     public List<Note> findAll() {
