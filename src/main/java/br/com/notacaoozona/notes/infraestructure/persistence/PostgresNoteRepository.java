@@ -3,6 +3,7 @@ package br.com.notacaoozona.notes.infraestructure.persistence;
 import br.com.notacaoozona.notes.domain.Note;
 import br.com.notacaoozona.notes.domain.NoteRepository;
 import br.com.notacaoozona.notes.infraestructure.persistence.mappers.NoteMapper;
+import br.com.notacaoozona.notes.infraestructure.persistence.model.NoteEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +26,13 @@ public class PostgresNoteRepository implements NoteRepository {
     @Override
     public List<Note> findAll() {
         return dao.findAll().stream()
+            .map(NoteMapper.INSTANCE::map)
+            .toList();
+    }
+
+    @Override
+    public List<Note> findByCategory(String category) {
+        return dao.findByCategory(category).stream()
             .map(NoteMapper.INSTANCE::map)
             .toList();
     }

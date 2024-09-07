@@ -21,6 +21,10 @@ public class NoteService {
         return noteRepository.findById(id);
     }
 
+    public List<Note> findByCategory(String category) {
+        return noteRepository.findByCategory(category);
+    }
+
     public List<Note> findAll() {
         return noteRepository.findAll();
     }
