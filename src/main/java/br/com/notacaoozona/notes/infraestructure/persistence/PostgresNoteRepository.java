@@ -3,7 +3,6 @@ package br.com.notacaoozona.notes.infraestructure.persistence;
 import br.com.notacaoozona.notes.domain.Note;
 import br.com.notacaoozona.notes.domain.NoteRepository;
 import br.com.notacaoozona.notes.infraestructure.persistence.mappers.NoteMapper;
-import br.com.notacaoozona.notes.infraestructure.persistence.model.NoteEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +39,12 @@ public class PostgresNoteRepository implements NoteRepository {
     @Override
     public Note save(Note note) {
         final var noteEntity = dao.persist(NoteMapper.INSTANCE.map(note));
+        return NoteMapper.INSTANCE.map(noteEntity);
+    }
+
+    @Override
+    public Note update(Note note) {
+        final var noteEntity = dao.merge(NoteMapper.INSTANCE.map(note));
         return NoteMapper.INSTANCE.map(noteEntity);
     }
 }

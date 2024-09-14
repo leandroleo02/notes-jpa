@@ -15,4 +15,6 @@ public interface NoteRepository {
     List<Note> findByCategory(String category);
 
     Note save(final Note note);
+
+    Note update(final Note note);
 }

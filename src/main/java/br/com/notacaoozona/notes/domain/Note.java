@@ -10,4 +10,8 @@ public record Note(UUID id,
     public Note(String title, String category, String text) {
         this(UUID.randomUUID(), title, category, text);
     }
+
+    public Note withId(UUID id) {
+        return new Note(id, title, category, text);
+    }
 }

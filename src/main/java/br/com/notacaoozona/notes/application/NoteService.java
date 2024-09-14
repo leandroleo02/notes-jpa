@@ -30,7 +30,12 @@ public class NoteService {
     }
 
     @Transactional
-    public Note create(Note noteForCreate) {
-        return noteRepository.save(noteForCreate);
+    public Note create(Note noteToCreate) {
+        return noteRepository.save(noteToCreate);
+    }
+
+    @Transactional
+    public Note update(UUID id, Note noteToUpdate) {
+        return noteRepository.update(noteToUpdate.withId(id));
     }
 }
