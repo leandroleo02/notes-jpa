@@ -1,7 +1,7 @@
 plugins {
     idea
 	java
-	id("org.springframework.boot") version "3.2.1"
+	id("org.springframework.boot") version "3.3.5"
 	id("io.spring.dependency-management") version "1.1.3"
 	id("org.graalvm.buildtools.native") version "0.9.20"
 }
@@ -33,6 +33,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-hateoas")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-database-postgresql")
 	compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -44,9 +45,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("io.hypersistence:hypersistence-utils-hibernate-63:3.8.2")
     implementation("javax.transaction:javax.transaction-api:1.3")
-    implementation("org.hibernate:hibernate-jcache:6.4.10.Final")
+    implementation("org.hibernate:hibernate-jcache:6.5.1.Final")
     implementation("org.ehcache:ehcache:3.10.8")
-    implementation ("javax.xml.bind:jaxb-api:2.3.1")
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.1")
 }
 
