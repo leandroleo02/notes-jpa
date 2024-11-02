@@ -13,6 +13,20 @@ services:
     networks:
       - local
 
+  app:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    networks:
+      - local
+    depends_on:
+      - db
+
 volumes:
   postgres-data:
 
