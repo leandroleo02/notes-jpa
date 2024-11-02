@@ -1,7 +1,7 @@
 ARG BUILD_CACHE_PATH
 
 # cache all the dependencies
-FROM gradle:8.4-jdk17 AS cache
+FROM gradle:8.10-jdk17 AS cache
 
 ARG BUILD_CACHE_PATH
 ENV GRADLE_USER_HOME=${BUILD_CACHE_PATH}
@@ -12,7 +12,7 @@ COPY settings.gradle.kts build.gradle.kts ./
 RUN gradle dependencies --no-daemon --info
 
 # once the dependencies are cached, build the application
-FROM gradle:8.4-jdk17 AS builder
+FROM gradle:8.10-jdk17 AS builder
 
 ARG BUILD_CACHE_PATH
 ENV GRADLE_USER_HOME=${BUILD_CACHE_PATH}
